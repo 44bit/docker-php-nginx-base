@@ -9,7 +9,6 @@ RUN apk add --no-cache \
     libzip-dev \
     postgresql-dev \
     nginx \
-    nginx \
     supervisor \
     curl \
     && rm /etc/nginx/conf.d/default.conf
