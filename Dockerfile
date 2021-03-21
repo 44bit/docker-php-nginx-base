@@ -35,6 +35,8 @@ COPY supervisord.conf   /etc/supervisor/conf.d/supervisord.conf
 RUN mkdir -p /application
 WORKDIR /application
 
+USER nobody
+
 # Make sure files/folders needed by the processes are accessable when they run under the nobody user
 RUN chown -R nobody.nobody /application \
     && chown -R nobody.nobody /run \
