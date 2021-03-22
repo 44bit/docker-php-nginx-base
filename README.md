@@ -4,28 +4,14 @@
 + it's a private docker repository, so you need to log in first
     + `doctl registry login`
 + mount the app in `/application` with root in `/application/public`
-
-## Behavior
-
-All calls with /api/ will be routed to index.php anytime!
-
-If there is an index.html nginx will route all calls there (if no /api/ included),
-else nginx will take index.php.
-
-```
-location / {
-    try_files $uri $uri/ /index.html /index.php$is_args$args;
-}
-
-location ~ ^/api/ {
-    try_files $uri /index.php$is_args$args;
-}
-```
++ Routing
+  + `/` -> index.html -> index.php
+  + `/api/` -> index.php
++ to start supervisor see command below
 
 ## Usage
 in docker-compose
 ```yaml
-version: '3.7'
 services:
     nginx_and_php:
         container_name: project_api
